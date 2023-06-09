@@ -10,7 +10,3 @@ const trpc = createTRPCProxyClient<AppRouter>({
 });
 
 trpc.vegetableList.query().then(vegetables => console.log('Vegetables:', vegetables));
-
-trpc.vegetableList.query().then(vegetables => vegetables.forEach(element => {
-  console.log(element);
-}));

@@ -1,8 +1,11 @@
-import { router, publicProcedure } from './trpc';
 import { createHTTPServer } from '@trpc/server/adapters/standalone';
+import { initTRPC } from '@trpc/server';
 import { db, Vegetable } from './db';
 
-const appRouter = router({
+const t = initTRPC.create();
+const publicProcedure = t.procedure;
+
+const appRouter = t.router({
   vegetableList: publicProcedure
     .query(async () => {
       const items = await db.vegetable.findMany();
