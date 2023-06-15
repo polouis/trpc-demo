@@ -10,4 +10,4 @@
 - npm i @trpc/server -w server
 
 ## Usefull commands
-- Tree structure `tree --gitignore -I *.js`
+- Tree structure `tree --gitignore`
