@@ -11,6 +11,14 @@ const appRouter = t.router({
       const items = await db.vegetable.findMany();
       return items;
     }),
+  vegetableCreate: publicProcedure
+    .input((val: unknown) => {
+      if (typeof val === 'string') return val;
+      throw new Error(`Invalid input: ${typeof val}`);
+    })
+    .mutation(async ({input, ctx}) => {
+      return db.vegetable.create({name: input});
+    })
 });
 
 export type AppRouter = typeof appRouter;
